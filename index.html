@@ -45,7 +45,6 @@
             border-radius: 5px;
             align-items: center;
             flex-wrap: wrap;
-            cursor: pointer;
         }
         .word-bank {
             display: flex;
@@ -63,14 +62,26 @@
             color: white;
             padding: 8px 12px;
             border-radius: 5px;
-            cursor: pointer;
             font-weight: bold;
             user-select: none;
             font-size: 0.95em;
-            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 5px;
         }
-        .word:hover {
-            background: #1f618d;
+        .word button {
+            background: #1b4f72;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 2px 6px;
+            font-size: 0.8em;
+            cursor: pointer;
+            margin: 0;
+        }
+        .word button:hover {
+            background: #154360;
         }
         .feedback {
             font-weight: bold;
@@ -79,7 +90,7 @@
         }
         .correct { color: #27ae60; }
         .incorrect { color: #c0392b; }
-        button {
+        .check-btn {
             display: block;
             margin: 15px 0 0 0;
             padding: 8px 18px;
@@ -90,7 +101,7 @@
             font-size: 1em;
             cursor: pointer;
         }
-        button:hover {
+        .check-btn:hover {
             background: #219653;
         }
     </style>
@@ -98,104 +109,90 @@
 <body>
 
     <h2>Interactive Practice B1: Sentences and Agreements</h2>
-    <p class="instruction">Tap a word in the bank to send it to the Sentence, tap it again to move it to Agreement, or tap it once more to send it back to the bank.</p>
+    <p class="instruction">Use the buttons on each word to send it to the Sentence, Agreement Response, or back to the Bank.</p>
 
     <!-- Exercise 1 -->
     <div class="item-container" id="ex1">
         <div class="section-label">1. Sentence:</div>
-        <div class="dropzone zone-sentence" onclick="zoneClicked(this)"></div>
+        <div class="dropzone zone-sentence"></div>
         
         <div class="section-label">Agreement Response:</div>
-        <div class="dropzone zone-agreement" onclick="zoneClicked(this)"></div>
+        <div class="dropzone zone-agreement"></div>
         
         <div class="word-bank">
-            <div class="word" onclick="wordTapped(event, this)">business</div>
-            <div class="word" onclick="wordTapped(event, this)">should</div>
-            <div class="word" onclick="wordTapped(event, this)">partner</div>
-            <div class="word" onclick="wordTapped(event, this)">So</div>
-            <div class="word" onclick="wordTapped(event, this)">in</div>
-            <div class="word" onclick="wordTapped(event, this)">Your</div>
-            <div class="word" onclick="wordTapped(event, this)">she</div>
-            <div class="word" onclick="wordTapped(event, this)">invest</div>
-            <div class="word" onclick="wordTapped(event, this)">should</div>
-            <div class="word" onclick="wordTapped(event, this)">marketing</div>
+            <div class="word">business <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">should <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">partner <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">So <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">in <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">Your <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">she <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">invest <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">should <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">marketing <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
         </div>
-        <button onclick="checkExercise(1)">Check Answer</button>
+        <button class="check-btn" onclick="checkExercise(1)">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <!-- Exercise 2 -->
     <div class="item-container" id="ex2">
         <div class="section-label">2. Sentence:</div>
-        <div class="dropzone zone-sentence" onclick="zoneClicked(this)"></div>
+        <div class="dropzone zone-sentence"></div>
         
         <div class="section-label">Agreement Response:</div>
-        <div class="dropzone zone-agreement" onclick="zoneClicked(this)"></div>
+        <div class="dropzone zone-agreement"></div>
         
         <div class="word-bank">
-            <div class="word" onclick="wordTapped(event, this)">have</div>
-            <div class="word" onclick="wordTapped(event, this)">finished</div>
-            <div class="word" onclick="wordTapped(event, this)">So</div>
-            <div class="word" onclick="wordTapped(event, this)">colleagues</div>
-            <div class="word" onclick="wordTapped(event, this)">the</div>
-            <div class="word" onclick="wordTapped(event, this)">have</div>
-            <div class="word" onclick="wordTapped(event, this)">report</div>
-            <div class="word" onclick="wordTapped(event, this)">My</div>
-            <div class="word" onclick="wordTapped(event, this)">they</div>
-            <div class="word" onclick="wordTapped(event, this)">already</div>
+            <div class="word">have <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">finished <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">So <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">colleagues <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">the <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">have <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">report <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">My <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">they <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">already <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
         </div>
-        <button onclick="checkExercise(2)">Check Answer</button>
+        <button class="check-btn" onclick="checkExercise(2)">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <!-- Exercise 3 -->
     <div class="item-container" id="ex3">
         <div class="section-label">3. Sentence:</div>
-        <div class="dropzone zone-sentence" onclick="zoneClicked(this)"></div>
+        <div class="dropzone zone-sentence"></div>
         
         <div class="section-label">Agreement Response:</div>
-        <div class="dropzone zone-agreement" onclick="zoneClicked(this)"></div>
+        <div class="dropzone zone-agreement"></div>
         
         <div class="word-bank">
-            <div class="word" onclick="wordTapped(event, this)">could</div>
-            <div class="word" onclick="wordTapped(event, this)">applicant</div>
-            <div class="word" onclick="wordTapped(event, this)">So</div>
-            <div class="word" onclick="wordTapped(event, this)">the</div>
-            <div class="word" onclick="wordTapped(event, this)">problem</div>
-            <div class="word" onclick="wordTapped(event, this)">That</div>
-            <div class="word" onclick="wordTapped(event, this)">he</div>
-            <div class="word" onclick="wordTapped(event, this)">solve</div>
-            <div class="word" onclick="wordTapped(event, this)">could</div>
+            <div class="word">could <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">applicant <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">So <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">the <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">problem <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">That <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">he <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">solve <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
+            <div class="word">could <span class="actions"><button onclick="moveTo(this, 'sentence')">S</button><button onclick="moveTo(this, 'agreement')">A</button><button onclick="moveTo(this, 'bank')">×</button></span></div>
         </div>
-        <button onclick="checkExercise(3)">Check Answer</button>
+        <button class="check-btn" onclick="checkExercise(3)">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <script>
-        function wordTapped(event, wordEl) {
-            event.stopPropagation();
+        function moveTo(btnEl, targetType) {
+            let wordEl = btnEl.closest('.word');
             let container = wordEl.closest('.item-container');
-            let bank = container.querySelector('.word-bank');
-            let sentenceZone = container.querySelector('.zone-sentence');
-            let agreementZone = container.querySelector('.zone-agreement');
-
-            if (wordEl.parentElement.classList.contains('word-bank')) {
-                // Si está en el banco, va a la oración
-                sentenceZone.appendChild(wordEl);
-            } else if (wordEl.parentElement.classList.contains('zone-sentence')) {
-                // Si está en la oración, pasa al acuerdo
-                agreementZone.appendChild(wordEl);
-            } else {
-                // Si está en el acuerdo, regresa al banco
-                bank.appendChild(wordEl);
-            }
-        }
-
-        function zoneClicked(zoneEl) {
-            if (zoneEl.lastElementChild) {
-                let container = zoneEl.closest('.item-container');
-                let bank = container.querySelector('.word-bank');
-                bank.appendChild(zoneEl.lastElementChild);
+            
+            if (targetType === 'sentence') {
+                container.querySelector('.zone-sentence').appendChild(wordEl);
+            } else if (targetType === 'agreement') {
+                container.querySelector('.zone-agreement').appendChild(wordEl);
+            } else if (targetType === 'bank') {
+                container.querySelector('.word-bank').appendChild(wordEl);
             }
         }
 
@@ -204,8 +201,9 @@
             let sentenceZone = container.querySelector(".zone-sentence");
             let agreementZone = container.querySelector(".zone-agreement");
             
-            let wordsBase = Array.from(sentenceZone.children).map(el => el.innerText);
-            let wordsAgree = Array.from(agreementZone.children).map(el => el.innerText);
+            // Extraer solo el texto de la palabra (ignorando el texto de los botones)
+            let wordsBase = Array.from(sentenceZone.children).map(el => el.childNodes[0].textContent.trim());
+            let wordsAgree = Array.from(agreementZone.children).map(el => el.childNodes[0].textContent.trim());
             let feedback = container.querySelector(".feedback");
             
             let correctBase, correctAgree;

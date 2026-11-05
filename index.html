@@ -21,7 +21,7 @@
             margin-bottom: 25px;
             color: #555;
         }
-        .item-container, .mc-container {
+        .item-container, .mc-container, .input-container {
             background: #fff;
             padding: 20px;
             margin-bottom: 25px;
@@ -86,6 +86,15 @@
             gap: 8px;
             font-size: 1.05em;
         }
+        .input-box {
+            padding: 8px;
+            font-size: 1em;
+            width: 250px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
         .feedback {
             font-weight: bold;
             margin-top: 15px;
@@ -112,7 +121,7 @@
 <body>
 
     <h2>Interactive Practice B1: Sentences and Agreements</h2>
-    <p class="instruction">Part 1: Tap words to build sentences and agreement responses. Part 2: Choose the correct tricky agreement.</p>
+    <p class="instruction">Complete all three parts to master short agreement responses in English.</p>
 
     <!-- PART 1: Word Order Exercises -->
     <h3>Part 1: Order the Sentences</h3>
@@ -179,11 +188,46 @@
         <div class="feedback"></div>
     </div>
 
+    <div class="item-container" id="ex4" data-sentence-count="5">
+        <div class="section-label">4. Sentence:</div>
+        <div class="dropzone zone-sentence"></div>
+        <div class="section-label">Agreement Response:</div>
+        <div class="dropzone zone-agreement"></div>
+        <div class="word-bank">
+            <div class="word" onclick="wordTapped(this)">will</div>
+            <div class="word" onclick="wordTapped(this)">They</div>
+            <div class="word" onclick="wordTapped(this)">So</div>
+            <div class="word" onclick="wordTapped(this)">succeed</div>
+            <div class="word" onclick="wordTapped(this)">will</div>
+            <div class="word" onclick="wordTapped(this)">they</div>
+            <div class="word" onclick="wordTapped(this)">certainly</div>
+        </div>
+        <button onclick="checkExercise(4)">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <div class="item-container" id="ex5" data-sentence-count="6">
+        <div class="section-label">5. Sentence:</div>
+        <div class="dropzone zone-sentence"></div>
+        <div class="section-label">Agreement Response:</div>
+        <div class="dropzone zone-agreement"></div>
+        <div class="word-bank">
+            <div class="word" onclick="wordTapped(this)">must</div>
+            <div class="word" onclick="wordTapped(this)">arrive</div>
+            <div class="word" onclick="wordTapped(this)">So</div>
+            <div class="word" onclick="wordTapped(this)">early</div>
+            <div class="word" onclick="wordTapped(this)">We</div>
+            <div class="word" onclick="wordTapped(this)">must</div>
+            <div class="word" onclick="wordTapped(this)">we</div>
+        </div>
+        <button onclick="checkExercise(5)">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
 
     <!-- PART 2: Tricky Multiple Choice Exercises -->
     <h3>Part 2: Tricky Agreements Challenge</h3>
 
-    <!-- MC Question 1 -->
     <div class="mc-container" id="mc1">
         <div class="section-label">1. Mark must submit the report by Friday, and...</div>
         <ul class="options-list">
@@ -195,7 +239,6 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- MC Question 2 -->
     <div class="mc-container" id="mc2">
         <div class="section-label">2. The directors have approved the new budget, and...</div>
         <ul class="options-list">
@@ -207,7 +250,6 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- MC Question 3 (Con pronombres posesivos) -->
     <div class="mc-container" id="mc3">
         <div class="section-label">3. Your office is located downtown, and...</div>
         <ul class="options-list">
@@ -219,7 +261,6 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- MC Question 4 (Con pronombres posesivos) -->
     <div class="mc-container" id="mc4">
         <div class="section-label">4. Her laptop works much faster than my old computer, and...</div>
         <ul class="options-list">
@@ -228,6 +269,65 @@
             <li><label><input type="radio" name="q4" value="c"> So is yours.</label></li>
         </ul>
         <button onclick="checkMC(4, 'a')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <div class="mc-container" id="mc5">
+        <div class="section-label">5. My design proposal was accepted immediately, and...</div>
+        <ul class="options-list">
+            <li><label><input type="radio" name="q5" value="a"> So was yours.</label></li>
+            <li><label><input type="radio" name="q5" value="b"> So yours was.</label></li>
+            <li><label><input type="radio" name="q5" value="c"> So did yours.</label></li>
+        </ul>
+        <button onclick="checkMC(5, 'a')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <div class="mc-container" id="mc6">
+        <div class="section-label">6. Their marketing strategy is completely innovative, and...</div>
+        <ul class="options-list">
+            <li><label><input type="radio" name="q6" value="a"> So is ours.</label></li>
+            <li><label><input type="radio" name="q6" value="b"> So ours is.</label></li>
+            <li><label><input type="radio" name="q6" value="c"> So are ours.</label></li>
+        </ul>
+        <button onclick="checkMC(6, 'a')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+
+    <!-- PART 3: Fill in the Blank Agreement Responses -->
+    <h3>Part 3: Complete the Agreement Response</h3>
+
+    <!-- Input Question 1 -->
+    <div class="input-container" id="in1">
+        <div class="section-label">1. Sarah can speak three languages fluently. Type the agreement response:</div>
+        <div><em>Example base: Sarah can speak three languages fluently.</em></div>
+        <input type="text" class="input-box" placeholder="e.g. So can she">
+        <button onclick="checkInput(1, 'so can she')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <!-- Input Question 2 -->
+    <div class="input-container" id="in2">
+        <div class="section-label">2. Our team achieved all our quarterly goals. Type the agreement response:</div>
+        <input type="text" class="input-box" placeholder="e.g. So did ours">
+        <button onclick="checkInput(2, 'so did ours')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <!-- Input Question 3 -->
+    <div class="input-container" id="in3">
+        <div class="section-label">3. David has visited every branch office in Europe. Type the agreement response:</div>
+        <input type="text" class="input-box" placeholder="e.g. So has he">
+        <button onclick="checkInput(3, 'so has he')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <!-- Input Question 4 -->
+    <div class="input-container" id="in4">
+        <div class="section-label">4. Your new smartphone takes amazing pictures. Type the agreement response:</div>
+        <input type="text" class="input-box" placeholder="e.g. So does mine">
+        <button onclick="checkInput(4, 'so does mine')">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
@@ -274,6 +374,12 @@
             } else if (exNum === 3) {
                 correctBase = JSON.stringify(wordsBase) === JSON.stringify(["That", "applicant", "could", "solve", "the", "problem"]);
                 correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["So", "could", "he"]);
+            } else if (exNum === 4) {
+                correctBase = JSON.stringify(wordsBase) === JSON.stringify(["They", "will", "certainly", "succeed"]);
+                correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["So", "will", "they"]);
+            } else if (exNum === 5) {
+                correctBase = JSON.stringify(wordsBase) === JSON.stringify(["We", "must", "arrive", "early"]);
+                correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["So", "must", "we"]);
             }
 
             if (correctBase && correctAgree) {
@@ -302,6 +408,31 @@
                 feedback.className = "feedback correct";
             } else {
                 feedback.innerHTML = "Incorrect. Watch out for subject-auxiliary inversion rules!";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        // Lógica de Part 3 (Completación por Input)
+        function checkInput(inNum, correctAnswer) {
+            let container = document.getElementById("in" + inNum);
+            let inputField = container.querySelector(".input-box");
+            let feedback = container.querySelector(".feedback");
+            
+            // Limpiamos espacios y convertimos a minúsculas para comparar de forma flexible (ignorando puntuación final si la ponen)
+            let userVal = inputField.value.trim().toLowerCase().replace(/[.,]/g, '');
+            let expectedVal = correctAnswer.toLowerCase();
+
+            if (userVal === "") {
+                feedback.innerHTML = "Please type your answer first.";
+                feedback.className = "feedback incorrect";
+                return;
+            }
+
+            if (userVal === expectedVal) {
+                feedback.innerHTML = "Correct! Great job writing the agreement.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "Incorrect. Check the auxiliary verb and pronouns.";
                 feedback.className = "feedback incorrect";
             }
         }

@@ -86,27 +86,18 @@
         button:hover {
             background: #219653;
         }
-        label {
-            font-weight: bold;
-            color: #2c3e50;
-            font-size: 0.95em;
-        }
     </style>
 </head>
 <body>
 
     <h2>Interactive Practice B1: Sentences and Agreements</h2>
-    <p class="instruction">Drag and drop all words to order the complete sentence and its agreement response (including the comma).</p>
+    <p class="instruction">Drag and drop all words from the word bank to build the complete sentence and its agreement response (including the comma).</p>
 
     <!-- Exercise 1 -->
     <div class="item-container" id="ex1">
-        <label>1. Sentence (Your business partner should invest in marketing):</label>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Agreement Response (So, should she):</label>
-        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
-        
-        <label>Word Bank:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w1">business</div>
             <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w2">should</div>
@@ -125,13 +116,9 @@
 
     <!-- Exercise 2 -->
     <div class="item-container" id="ex2">
-        <label>2. Sentence (My colleagues have already finished the report):</label>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Agreement Response (So, have they):</label>
-        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
-        
-        <label>Word Bank:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w1">have</div>
             <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w2">finished</div>
@@ -150,13 +137,9 @@
 
     <!-- Exercise 3 -->
     <div class="item-container" id="ex3">
-        <label>3. Sentence (That applicant could solve the problem):</label>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Agreement Response (So, could he):</label>
-        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
-        
-        <label>Word Bank:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w1">could</div>
             <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w2">applicant</div>
@@ -199,7 +182,7 @@
             let target = ev.target;
             if (target.classList.contains('dropzone') || target.classList.contains('word-bank')) {
                 target.appendChild(draggedElement);
-            } else if (target.classList.contains('word') || target.classList.contains('sentence')) {
+            } else if (target.classList.contains('word')) {
                 target.parentNode.appendChild(draggedElement);
             }
             removeHover({target: ev.currentTarget});

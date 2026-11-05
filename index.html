@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Interactive Practice B1: Agreements and Disagreements</title>
+    <title>Interactive Practice B1: Agreements (Positive & Negative)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -120,13 +120,13 @@
 </head>
 <body>
 
-    <h2>Interactive Practice B1: Agreements and Disagreements</h2>
-    <p class="instruction">Practice both positive agreements (So...) and negative disagreements (Neither...).</p>
+    <h2>Interactive Practice B1: Agreements (Positive & Negative)</h2>
+    <p class="instruction">Practice short agreements with positive statements (So...) and negative statements (Neither...).</p>
 
     <!-- PART 1: Word Order Exercises -->
     <h3>Part 1: Order the Sentences</h3>
 
-    <!-- Ejercicio 1 (Agreement) -->
+    <!-- Ejercicio 1 (Positive Agreement con So) -->
     <div class="item-container" id="ex1" data-sentence-count="7">
         <div class="section-label">1. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -148,9 +148,28 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 2 (Disagreement con Neither) -->
+    <!-- Ejercicio 2 (Positive Agreement con So) -->
     <div class="item-container" id="ex2" data-sentence-count="6">
         <div class="section-label">2. Sentence:</div>
+        <div class="dropzone zone-sentence"></div>
+        <div class="section-label">Response:</div>
+        <div class="dropzone zone-agreement"></div>
+        <div class="word-bank">
+            <div class="word" onclick="wordTapped(this)">can</div>
+            <div class="word" onclick="wordTapped(this)">speak</div>
+            <div class="word" onclick="wordTapped(this)">So</div>
+            <div class="word" onclick="wordTapped(this)">languages</div>
+            <div class="word" onclick="wordTapped(this)">fluent</div>
+            <div class="word" onclick="wordTapped(this)">She</div>
+            <div class="word" onclick="wordTapped(this)">she</div>
+        </div>
+        <button onclick="checkExercise(2)">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <!-- Ejercicio 3 (Negative Agreement con Neither) -->
+    <div class="item-container" id="ex3" data-sentence-count="6">
+        <div class="section-label">3. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
         <div class="section-label">Response:</div>
         <div class="dropzone zone-agreement"></div>
@@ -163,32 +182,11 @@
             <div class="word" onclick="wordTapped(this)">difficult</div>
             <div class="word" onclick="wordTapped(this)">this</div>
         </div>
-        <button onclick="checkExercise(2)">Check Answer</button>
-        <div class="feedback"></div>
-    </div>
-
-    <!-- Ejercicio 3 (Agreement) -->
-    <div class="item-container" id="ex3" data-sentence-count="6">
-        <div class="section-label">3. Sentence:</div>
-        <div class="dropzone zone-sentence"></div>
-        <div class="section-label">Response:</div>
-        <div class="dropzone zone-agreement"></div>
-        <div class="word-bank">
-            <div class="word" onclick="wordTapped(this)">could</div>
-            <div class="word" onclick="wordTapped(this)">applicant</div>
-            <div class="word" onclick="wordTapped(this)">So</div>
-            <div class="word" onclick="wordTapped(this)">the</div>
-            <div class="word" onclick="wordTapped(this)">problem</div>
-            <div class="word" onclick="wordTapped(this)">That</div>
-            <div class="word" onclick="wordTapped(this)">he</div>
-            <div class="word" onclick="wordTapped(this)">solve</div>
-            <div class="word" onclick="wordTapped(this)">could</div>
-        </div>
         <button onclick="checkExercise(3)">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 4 (Disagreement con Neither) -->
+    <!-- Ejercicio 4 (Negative Agreement con Neither) -->
     <div class="item-container" id="ex4" data-sentence-count="6">
         <div class="section-label">4. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -209,14 +207,14 @@
 
 
     <!-- PART 2: Tricky Multiple Choice Exercises -->
-    <h3>Part 2: Tricky Agreements & Disagreements Challenge</h3>
+    <h3>Part 2: Tricky Agreements Challenge (So vs Neither)</h3>
 
     <div class="mc-container" id="mc1">
         <div class="section-label">1. Mark must submit the report by Friday, and...</div>
         <ul class="options-list">
             <li><label><input type="radio" name="q1" value="a"> So must he.</label></li>
-            <li><label><input type="radio" name="q1" value="b"> So he must.</label></li>
-            <li><label><input type="radio" name="q1" value="c"> So must submit he.</label></li>
+            <li><label><input type="radio" name="q1" value="b"> Neither must he.</label></li>
+            <li><label><input type="radio" name="q1" value="c"> So he must.</label></li>
         </ul>
         <button onclick="checkMC(1, 'a')">Check Answer</button>
         <div class="feedback"></div>
@@ -226,19 +224,19 @@
         <div class="section-label">2. I cannot tolerate this constant office noise, and...</div>
         <ul class="options-list">
             <li><label><input type="radio" name="q2" value="a"> Neither can I.</label></li>
-            <li><label><input type="radio" name="q2" value="b"> Neither I can.</label></li>
-            <li><label><input type="radio" name="q2" value="c"> So can I.</label></li>
+            <li><label><input type="radio" name="q2" value="b"> So can I.</label></li>
+            <li><label><input type="radio" name="q2" value="c"> Neither I can.</label></li>
         </ul>
         <button onclick="checkMC(2, 'a')">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <div class="mc-container" id="mc3">
-        <div class="section-label">3. Your office is located downtown, and...</div>
+        <div class="section-label">3. Your office is not located downtown, and...</div>
         <ul class="options-list">
-            <li><label><input type="radio" name="q3" value="a"> So is mine.</label></li>
-            <li><label><input type="radio" name="q3" value="b"> So mine is.</label></li>
-            <li><label><input type="radio" name="q3" value="c"> Neither is mine.</label></li>
+            <li><label><input type="radio" name="q3" value="a"> Neither is mine.</label></li>
+            <li><label><input type="radio" name="q3" value="b"> So is mine.</label></li>
+            <li><label><input type="radio" name="q3" value="c"> Neither mine is.</label></li>
         </ul>
         <button onclick="checkMC(3, 'a')">Check Answer</button>
         <div class="feedback"></div>
@@ -248,16 +246,16 @@
         <div class="section-label">4. Susan didn't attend yesterday's corporate meeting, and...</div>
         <ul class="options-list">
             <li><label><input type="radio" name="q4" value="a"> Neither did I.</label></li>
-            <li><label><input type="radio" name="q4" value="b"> Neither I did.</label></li>
-            <li><label><input type="radio" name="q4" value="c"> So didn't I.</label></li>
+            <li><label><input type="radio" name="q4" value="b"> So did I.</label></li>
+            <li><label><input type="radio" name="q4" value="c"> Neither I did.</label></li>
         </ul>
         <button onclick="checkMC(4, 'a')">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
 
-    <!-- PART 3: Fill in the Blank Agreement/Disagreement Responses -->
-    <h3>Part 3: Complete the Response (Agreement or Disagreement)</h3>
+    <!-- PART 3: Fill in the Blank Agreement Responses -->
+    <h3>Part 3: Complete the Agreement Response (So / Neither)</h3>
 
     <div class="input-container" id="in1">
         <div class="section-label">1. Sarah can speak three languages fluently. Type the agreement response:</div>
@@ -267,14 +265,14 @@
     </div>
 
     <div class="input-container" id="in2">
-        <div class="section-label">2. I don't like working on weekends. Type the disagreement response:</div>
+        <div class="section-label">2. I don't like working on weekends. Type the agreement response:</div>
         <input type="text" class="input-box">
         <button onclick="checkInput(2, 'neither do i')">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <div class="input-container" id="in3">
-        <div class="section-label">3. David has never visited branch offices in Asia. Type the disagreement response:</div>
+        <div class="section-label">3. David has never visited branch offices in Asia. Type the agreement response:</div>
         <input type="text" class="input-box">
         <button onclick="checkInput(3, 'neither have i')">Check Answer</button>
         <div class="feedback"></div>
@@ -325,11 +323,11 @@
                 correctBase = JSON.stringify(wordsBase) === JSON.stringify(["Your", "business", "partner", "should", "invest", "in", "marketing"]);
                 correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["So", "should", "she"]);
             } else if (exNum === 2) {
+                correctBase = JSON.stringify(wordsBase) === JSON.stringify(["She", "can", "speak", "fluent", "languages"]);
+                correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["So", "can", "she"]);
+            } else if (exNum === 3) {
                 correctBase = JSON.stringify(wordsBase) === JSON.stringify(["I", "can", "finish", "this", "difficult", "task"]);
                 correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["Neither", "can", "I"]);
-            } else if (exNum === 3) {
-                correctBase = JSON.stringify(wordsBase) === JSON.stringify(["That", "applicant", "could", "solve", "the", "problem"]);
-                correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["So", "could", "he"]);
             } else if (exNum === 4) {
                 correctBase = JSON.stringify(wordsBase) === JSON.stringify(["My", "brother", "will", "travel", "abroad"]);
                 correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["Neither", "will", "he"]);
@@ -360,7 +358,7 @@
                 feedback.innerHTML = "Correct! Well spotted.";
                 feedback.className = "feedback correct";
             } else {
-                feedback.innerHTML = "Incorrect. Watch out for inversion and auxiliary rules!";
+                feedback.innerHTML = "Incorrect. Check if the sentence is affirmative or negative!";
                 feedback.className = "feedback incorrect";
             }
         }

@@ -45,6 +45,7 @@
             border-radius: 5px;
             align-items: center;
             flex-wrap: wrap;
+            cursor: pointer;
         }
         .word-bank {
             display: flex;
@@ -97,7 +98,7 @@
 <body>
 
     <h2>Interactive Practice B1: Sentences and Agreements</h2>
-    <p class="instruction">Tap words from the bank to place them in order. Tap any placed word to send it back.</p>
+    <p class="instruction">Tap a word in the bank to send it to the Sentence, tap it again to move it to Agreement, or tap it once more to send it back to the bank.</p>
 
     <!-- Exercise 1 -->
     <div class="item-container" id="ex1">
@@ -179,19 +180,17 @@
             let agreementZone = container.querySelector('.zone-agreement');
 
             if (wordEl.parentElement.classList.contains('word-bank')) {
-                // Lógica de llenado: si la oración tiene menos de 7 palabras, va a la primera zona. Si no, a la segunda.
-                if (sentenceZone.children.length < 7) {
-                    sentenceZone.appendChild(wordEl);
-                } else {
-                    agreementZone.appendChild(wordEl);
-                }
+                // Si está en el banco, va a la oración
+                sentenceZone.appendChild(wordEl);
+            } else if (wordEl.parentElement.classList.contains('zone-sentence')) {
+                // Si está en la oración, pasa al acuerdo
+                agreementZone.appendChild(wordEl);
             } else {
-                // Si ya está en una zona, la regresa al banco
+                // Si está en el acuerdo, regresa al banco
                 bank.appendChild(wordEl);
             }
         }
 
-        // Permitir devolver la última palabra colocada al hacer clic directamente en la zona
         function zoneClicked(zoneEl) {
             if (zoneEl.lastElementChild) {
                 let container = zoneEl.closest('.item-container');

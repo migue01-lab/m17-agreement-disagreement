@@ -2,14 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Práctica Interactiva: Oraciones y Acuerdos</title>
+    <title>Práctica Interactiva B1: Agreements</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f7f6;
             color: #333;
             padding: 20px;
-            max-width: 900px;
+            max-width: 950px;
             margin: auto;
         }
         h2 {
@@ -24,7 +24,7 @@
         .item-container {
             background: #fff;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
@@ -38,8 +38,8 @@
             border-radius: 5px;
             align-items: center;
             flex-wrap: wrap;
-            margin-top: 10px;
-            margin-bottom: 15px;
+            margin-top: 5px;
+            margin-bottom: 12px;
         }
         .word-bank {
             display: flex;
@@ -50,9 +50,10 @@
             border: 1px solid #dee2e6;
             border-radius: 5px;
             min-height: 45px;
+            margin-top: 5px;
         }
         .word {
-            background: #3498db;
+            background: #2980b9;
             color: white;
             padding: 8px 12px;
             border-radius: 5px;
@@ -74,7 +75,7 @@
             display: block;
             margin: 30px auto;
             padding: 12px 25px;
-            background: #2ecc71;
+            background: #27ae60;
             color: white;
             border: none;
             border-radius: 5px;
@@ -82,57 +83,87 @@
             cursor: pointer;
         }
         button:hover {
-            background: #27ae60;
+            background: #219653;
         }
         label {
             font-weight: bold;
             color: #2c3e50;
+            font-size: 0.95em;
         }
     </style>
 </head>
 <body>
 
-    <h2>Práctica Interactiva: Arma la Oración y el Acuerdo</h2>
-    <p class="instruction">Arrastra todas las palabras a su zona correspondiente para ordenar primero la oración base y luego su respuesta de acuerdo (ej: So does she).</p>
+    <h2>Práctica Interactiva Nivel B1: Oraciones y Acuerdos</h2>
+    <p class="instruction">Arrastra todas las palabras para ordenar la oración principal (con modales y estructuras B1) y su respectiva respuesta de acuerdo (So + auxiliar + sujeto).</p>
 
-    <!-- Ejercicio 1 -->
+    <!-- Ejercicio 1: Modal Should / She -->
     <div class="item-container" id="ex1">
-        <label>1. Oración Base (My brother studies English):</label>
+        <label>1. Oración Base (Your business partner should invest in marketing):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Respuesta de Acuerdo (So does she):</label>
+        <label>Respuesta de Acuerdo (So should she):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
         <label>Banco de Palabras desordenadas:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w1">does</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w2">English</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w3">My</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w4">brother</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w5">she</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w6">So</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w7">studies</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w1">business</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w2">should</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w3">partner</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w4">So</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w5">in</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w6">Your</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w7">she</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w8">invest</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w9">should</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w10">marketing</div>
         </div>
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 2 -->
+    <!-- Ejercicio 2: Verbo Have (Present Perfect) / They -->
     <div class="item-container" id="ex2">
-        <label>1. Oración Base (Your friends can swim fast):</label>
+        <label>2. Oración Base (My colleagues have already finished the report):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Respuesta de Acuerdo (So can they):</label>
+        <label>Respuesta de Acuerdo (So have they):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
         <label>Banco de Palabras desordenadas:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w1">can</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w2">fast</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w3">Your</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w4">they</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w5">friends</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w6">So</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w7">swim</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w1">have</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w2">finished</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w3">So</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w4">colleagues</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w5">the</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w6">have</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w7">report</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w8">My</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w9">they</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w10">already</div>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <!-- Ejercicio 3: Modal Could / He -->
+    <div class="item-container" id="ex3">
+        <label>3. Oración Base (That applicant could solve the problem):</label>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        
+        <label>Respuesta de Acuerdo (So could he):</label>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        
+        <label>Banco de Palabras desordenadas:</label>
+        <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w1">could</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w2">applicant</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w3">So</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w4">the</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w5">problem</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w6">That</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w7">he</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w8">solve</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w9">could</div>
         </div>
         <div class="feedback"></div>
     </div>
@@ -177,14 +208,14 @@
             let wordsAgree1 = Array.from(zones1[1].children).map(el => el.innerText);
             let feedback1 = document.querySelector("#ex1 .feedback");
             
-            let correctBase1 = JSON.stringify(wordsBase1) === JSON.stringify(["My", "brother", "studies", "English"]);
-            let correctAgree1 = JSON.stringify(wordsAgree1) === JSON.stringify(["So", "does", "she"]);
+            let correctBase1 = JSON.stringify(wordsBase1) === JSON.stringify(["Your", "business", "partner", "should", "invest", "in", "marketing"]);
+            let correctAgree1 = JSON.stringify(wordsAgree1) === JSON.stringify(["So", "should", "she"]);
 
             if (correctBase1 && correctAgree1) {
-                feedback1.innerHTML = "¡Excelente! Todo correcto.";
+                feedback1.innerHTML = "¡Excelente! Nivel B1 dominado.";
                 feedback1.className = "feedback correct";
             } else {
-                feedback1.innerHTML = "Revisa el orden. Oración: My brother studies English / Acuerdo: So does she";
+                feedback1.innerHTML = "Revisa bien el orden de los modales y auxiliares.";
                 feedback1.className = "feedback incorrect";
             }
 
@@ -194,15 +225,32 @@
             let wordsAgree2 = Array.from(zones2[1].children).map(el => el.innerText);
             let feedback2 = document.querySelector("#ex2 .feedback");
             
-            let correctBase2 = JSON.stringify(wordsBase2) === JSON.stringify(["Your", "friends", "can", "swim", "fast"]);
-            let correctAgree2 = JSON.stringify(wordsAgree2) === JSON.stringify(["So", "can", "they"]);
+            let correctBase2 = JSON.stringify(wordsBase2) === JSON.stringify(["My", "colleagues", "have", "already", "finished", "the", "report"]);
+            let correctAgree2 = JSON.stringify(wordsAgree2) === JSON.stringify(["So", "have", "they"]);
 
             if (correctBase2 && correctAgree2) {
-                feedback2.innerHTML = "¡Excelente! Todo correcto.";
+                feedback2.innerHTML = "¡Excelente! Excelente uso del 'have'.";
                 feedback2.className = "feedback correct";
             } else {
-                feedback2.innerHTML = "Revisa el orden. Oración: Your friends can swim fast / Acuerdo: So can they";
+                feedback2.innerHTML = "Revisa el orden. Cuenta bien los auxiliares.";
                 feedback2.className = "feedback incorrect";
+            }
+
+            // Validación Ejercicio 3
+            let zones3 = document.querySelectorAll("#ex3 .dropzone");
+            let wordsBase3 = Array.from(zones3[0].children).map(el => el.innerText);
+            let wordsAgree3 = Array.from(zones3[1].children).map(el => el.innerText);
+            let feedback3 = document.querySelector("#ex3 .feedback");
+            
+            let correctBase3 = JSON.stringify(wordsBase3) === JSON.stringify(["That", "applicant", "could", "solve", "the", "problem"]);
+            let correctAgree3 = JSON.stringify(wordsAgree3) === JSON.stringify(["So", "could", "he"]);
+
+            if (correctBase3 && correctAgree3) {
+                feedback3.innerHTML = "¡Perfecto! Estructura impecable.";
+                feedback3.className = "feedback correct";
+            } else {
+                feedback3.innerHTML = "Inténtalo de nuevo. Piensa en el modal 'could'.";
+                feedback3.className = "feedback incorrect";
             }
         }
     </script>

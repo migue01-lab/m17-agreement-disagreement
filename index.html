@@ -2,14 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Práctica Interactiva: Agreements</title>
+    <title>Práctica Interactiva: Oraciones y Acuerdos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f7f6;
             color: #333;
             padding: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
         }
         h2 {
@@ -23,95 +23,116 @@
         }
         .item-container {
             background: #fff;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .sentence {
-            font-weight: bold;
-            font-size: 1.1em;
         }
         .dropzone {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             min-height: 45px;
-            padding: 5px;
+            padding: 8px;
             background: #e9ecef;
             border: 2px dashed #ced4da;
             border-radius: 5px;
             align-items: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            margin-bottom: 15px;
         }
         .word-bank {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
-            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            min-height: 45px;
         }
         .word {
             background: #3498db;
             color: white;
-            padding: 8px 15px;
+            padding: 8px 12px;
             border-radius: 5px;
             cursor: grab;
             font-weight: bold;
             user-select: none;
+            font-size: 0.95em;
         }
         .word:active {
             cursor: grabbing;
         }
         .feedback {
             font-weight: bold;
-            margin-top: 5px;
+            margin-top: 10px;
         }
         .correct { color: #27ae60; }
         .incorrect { color: #c0392b; }
         button {
             display: block;
             margin: 30px auto;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background: #2ecc71;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 1.1em;
             cursor: pointer;
         }
         button:hover {
             background: #27ae60;
         }
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
 
-    <h2>Práctica Interactiva: Acuerdos Naturales</h2>
-    <p class="instruction">Arrastra las palabras de la parte inferior para formar la respuesta correcta de acuerdo (so + auxiliar + sujeto).</p>
+    <h2>Práctica Interactiva: Arma la Oración y el Acuerdo</h2>
+    <p class="instruction">Arrastra todas las palabras a su zona correspondiente para ordenar primero la oración base y luego su respuesta de acuerdo (ej: So does she).</p>
 
     <!-- Ejercicio 1 -->
     <div class="item-container" id="ex1">
-        <div class="sentence">1. My brother studies English. (She)</div>
+        <label>1. Oración Base (My brother studies English):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        
+        <label>Respuesta de Acuerdo (So does she):</label>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        
+        <label>Banco de Palabras desordenadas:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w1">So</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w2">does</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w3">she</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w4">can</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w1">does</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w2">English</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w3">My</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w4">brother</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w5">she</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w6">So</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w7">studies</div>
         </div>
         <div class="feedback"></div>
     </div>
 
     <!-- Ejercicio 2 -->
     <div class="item-container" id="ex2">
-        <div class="sentence">2. Your friends can swim fast. (They)</div>
+        <label>1. Oración Base (Your friends can swim fast):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        
+        <label>Respuesta de Acuerdo (So can they):</label>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        
+        <label>Banco de Palabras desordenadas:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w5">they</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w6">So</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w7">do</div>
-            <div class="word" draggable="true" ondragstart="drag(event)" id="w8">can</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w1">can</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w2">fast</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w3">Your</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w4">they</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w5">friends</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w6">So</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w7">swim</div>
         </div>
         <div class="feedback"></div>
     </div>
@@ -140,11 +161,10 @@
             let data = ev.dataTransfer.getData("text");
             let draggedElement = document.getElementById(data);
             
-            // Si sueltan en una zona de entrega o banco de palabras válido
             let target = ev.target;
             if (target.classList.contains('dropzone') || target.classList.contains('word-bank')) {
                 target.appendChild(draggedElement);
-            } else if (target.classList.contains('word')) {
+            } else if (target.classList.contains('word') || target.classList.contains('sentence')) {
                 target.parentNode.appendChild(draggedElement);
             }
             removeHover({target: ev.currentTarget});
@@ -152,26 +172,36 @@
 
         function checkAnswers() {
             // Validación Ejercicio 1
-            let zone1 = document.querySelector("#ex1 .dropzone");
-            let words1 = Array.from(zone1.children).map(el => el.innerText);
+            let zones1 = document.querySelectorAll("#ex1 .dropzone");
+            let wordsBase1 = Array.from(zones1[0].children).map(el => el.innerText);
+            let wordsAgree1 = Array.from(zones1[1].children).map(el => el.innerText);
             let feedback1 = document.querySelector("#ex1 .feedback");
-            if (JSON.stringify(words1) === JSON.stringify(["So", "does", "she"])) {
-                feedback1.innerHTML = "¡Correcto! Excelente uso del auxiliar.";
+            
+            let correctBase1 = JSON.stringify(wordsBase1) === JSON.stringify(["My", "brother", "studies", "English"]);
+            let correctAgree1 = JSON.stringify(wordsAgree1) === JSON.stringify(["So", "does", "she"]);
+
+            if (correctBase1 && correctAgree1) {
+                feedback1.innerHTML = "¡Excelente! Todo correcto.";
                 feedback1.className = "feedback correct";
             } else {
-                feedback1.innerHTML = "Inténtalo de nuevo. Recuerda: So + does + she";
+                feedback1.innerHTML = "Revisa el orden. Oración: My brother studies English / Acuerdo: So does she";
                 feedback1.className = "feedback incorrect";
             }
 
             // Validación Ejercicio 2
-            let zone2 = document.querySelector("#ex2 .dropzone");
-            let words2 = Array.from(zone2.children).map(el => el.innerText);
+            let zones2 = document.querySelectorAll("#ex2 .dropzone");
+            let wordsBase2 = Array.from(zones2[0].children).map(el => el.innerText);
+            let wordsAgree2 = Array.from(zones2[1].children).map(el => el.innerText);
             let feedback2 = document.querySelector("#ex2 .feedback");
-            if (JSON.stringify(words2) === JSON.stringify(["So", "can", "they"])) {
-                feedback2.innerHTML = "¡Correcto! Muy bien aplicado.";
+            
+            let correctBase2 = JSON.stringify(wordsBase2) === JSON.stringify(["Your", "friends", "can", "swim", "fast"]);
+            let correctAgree2 = JSON.stringify(wordsAgree2) === JSON.stringify(["So", "can", "they"]);
+
+            if (correctBase2 && correctAgree2) {
+                feedback2.innerHTML = "¡Excelente! Todo correcto.";
                 feedback2.className = "feedback correct";
             } else {
-                feedback2.innerHTML = "Inténtalo de nuevo. Recuerda: So + can + they";
+                feedback2.innerHTML = "Revisa el orden. Oración: Your friends can swim fast / Acuerdo: So can they";
                 feedback2.className = "feedback incorrect";
             }
         }

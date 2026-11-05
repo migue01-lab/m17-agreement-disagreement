@@ -126,7 +126,6 @@
     <!-- PART 1: Word Order Exercises -->
     <h3>Part 1: Order the Sentences</h3>
 
-    <!-- Ejercicio 1 (Positivo con So) -->
     <div class="item-container" id="ex1" data-sentence-count="7">
         <div class="section-label">1. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -148,7 +147,6 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 2 (Positivo con So) -->
     <div class="item-container" id="ex2" data-sentence-count="7">
         <div class="section-label">2. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -170,7 +168,6 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 3 (Negativo con Neither - Oración base ahora es negativa: "cannot") -->
     <div class="item-container" id="ex3" data-sentence-count="7">
         <div class="section-label">3. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -191,7 +188,6 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 4 (Negativo con Neither - Oración base ahora es negativa: "won't") -->
     <div class="item-container" id="ex4" data-sentence-count="6">
         <div class="section-label">4. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -266,28 +262,28 @@
     <div class="input-container" id="in1">
         <div class="section-label">1. Sarah can speak three languages fluently. Type the agreement response:</div>
         <input type="text" class="input-box">
-        <button onclick="checkInput(1, 'so can she')">Check Answer</button>
+        <button onclick="checkInput(1, ['so can she'])">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <div class="input-container" id="in2">
         <div class="section-label">2. I don't like working on weekends. Type the agreement response:</div>
         <input type="text" class="input-box">
-        <button onclick="checkInput(2, 'neither do i')">Check Answer</button>
+        <button onclick="checkInput(2, ['neither do i'])">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <div class="input-container" id="in3">
         <div class="section-label">3. David has never visited branch offices in Asia. Type the agreement response:</div>
         <input type="text" class="input-box">
-        <button onclick="checkInput(3, 'neither has he')">Check Answer</button>
+        <button onclick="checkInput(3, ['neither have i', 'neither has she', 'neither have we'])">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
     <div class="input-container" id="in4">
         <div class="section-label">4. Your new smartphone takes amazing pictures. Type the agreement response:</div>
         <input type="text" class="input-box">
-        <button onclick="checkInput(4, 'so does mine')">Check Answer</button>
+        <button onclick="checkInput(4, ['so does mine'])">Check Answer</button>
         <div class="feedback"></div>
     </div>
 
@@ -370,13 +366,12 @@
         }
 
         // Lógica de Part 3 (Completación por Input)
-        function checkInput(inNum, correctAnswer) {
+        function checkInput(inNum, acceptedAnswers) {
             let container = document.getElementById("in" + inNum);
             let inputField = container.querySelector(".input-box");
             let feedback = container.querySelector(".feedback");
             
             let userVal = inputField.value.trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.,]/g, '');
-            let expectedVal = correctAnswer.toLowerCase();
 
             if (userVal === "") {
                 feedback.innerHTML = "Please type your answer first.";
@@ -384,7 +379,7 @@
                 return;
             }
 
-            if (userVal === expectedVal) {
+            if (acceptedAnswers.includes(userVal)) {
                 feedback.innerHTML = "Correct! Great job writing the response.";
                 feedback.className = "feedback correct";
             } else {

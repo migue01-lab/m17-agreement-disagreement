@@ -126,7 +126,7 @@
     <!-- PART 1: Word Order Exercises -->
     <h3>Part 1: Order the Sentences</h3>
 
-    <!-- Ejercicio 1 (Positive Agreement con So) -->
+    <!-- Ejercicio 1 -->
     <div class="item-container" id="ex1" data-sentence-count="7">
         <div class="section-label">1. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -148,7 +148,7 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 2 (Positive Agreement con So - Corregido con sus 5 palabras base + 3 de respuesta) -->
+    <!-- Ejercicio 2 -->
     <div class="item-container" id="ex2" data-sentence-count="5">
         <div class="section-label">2. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -168,7 +168,7 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 3 (Negative Agreement con Neither) -->
+    <!-- Ejercicio 3 (Corregido: 6 palabras base + 3 de respuesta) -->
     <div class="item-container" id="ex3" data-sentence-count="6">
         <div class="section-label">3. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
@@ -189,8 +189,8 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 4 (Negative Agreement con Neither) -->
-    <div class="item-container" id="ex4" data-sentence-count="5">
+    <!-- Ejercicio 4 (Corregido: 4 palabras base + 3 de respuesta) -->
+    <div class="item-container" id="ex4" data-sentence-count="4">
         <div class="section-label">4. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
         <div class="section-label">Response:</div>
@@ -333,7 +333,7 @@
                 correctBase = JSON.stringify(wordsBase) === JSON.stringify(["I", "can", "finish", "this", "difficult", "task"]);
                 correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["Neither", "can", "I"]);
             } else if (exNum === 4) {
-                correctBase = JSON.stringify(wordsBase) === JSON.stringify(["My", "brother", "will", "travel", "abroad"]);
+                correctBase = JSON.stringify(wordsBase) === JSON.stringify(["My", "brother", "will", "travel"]);
                 correctAgree = JSON.stringify(wordsAgree) === JSON.stringify(["Neither", "will", "he"]);
             }
 
@@ -367,13 +367,14 @@
             }
         }
 
-        // Lógica de Part 3 (Completación por Input)
+        // Lógica de Part 3 (Completación por Input - Corregida y flexible)
         function checkInput(inNum, correctAnswer) {
             let container = document.getElementById("in" + inNum);
             let inputField = container.querySelector(".input-box");
             let feedback = container.querySelector(".feedback");
             
-            let userVal = inputField.value.trim().toLowerCase().replace(/[.,]/g, '');
+            // Limpieza robusta de espacios múltiples y puntuación para evitar falsos negativos
+            let userVal = inputField.value.trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.,]/g, '');
             let expectedVal = correctAnswer.toLowerCase();
 
             if (userVal === "") {

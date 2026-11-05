@@ -29,16 +29,16 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .section-label {
-            font-size: 0.85em;
-            color: #7f8c8d;
-            margin-top: 10px;
-            margin-bottom: 3px;
+            font-size: 0.9em;
+            color: #2c3e50;
+            margin-top: 12px;
+            margin-bottom: 4px;
             font-weight: bold;
         }
         .dropzone {
             display: flex;
             gap: 8px;
-            min-height: 45px;
+            min-height: 48px;
             padding: 8px;
             background: #e9ecef;
             border: 2px dashed #ced4da;
@@ -54,8 +54,8 @@
             background: #f8f9fa;
             border: 1px solid #dee2e6;
             border-radius: 5px;
-            min-height: 45px;
-            margin-top: 10px;
+            min-height: 48px;
+            margin-top: 12px;
         }
         .word {
             background: #2980b9;
@@ -97,16 +97,17 @@
 <body>
 
     <h2>Interactive Practice B1: Sentences and Agreements</h2>
-    <p class="instruction">Tap words from the bank to place them in order. Tap a word again to send it back.</p>
+    <p class="instruction">Tap words from the bank to place them in order. Tap any placed word to send it back.</p>
 
     <!-- Exercise 1 -->
     <div class="item-container" id="ex1">
-        <div class="section-label">Sentence:</div>
-        <div class="dropzone" onclick="zoneTapped(this)"></div>
-        <div class="section-label">Agreement:</div>
-        <div class="dropzone" onclick="zoneTapped(this)"></div>
+        <div class="section-label">1. Sentence:</div>
+        <div class="dropzone zone-sentence" onclick="zoneClicked(this)"></div>
         
-        <div class="word-bank" onclick="bankTapped(this)">
+        <div class="section-label">Agreement Response:</div>
+        <div class="dropzone zone-agreement" onclick="zoneClicked(this)"></div>
+        
+        <div class="word-bank">
             <div class="word" onclick="wordTapped(event, this)">business</div>
             <div class="word" onclick="wordTapped(event, this)">should</div>
             <div class="word" onclick="wordTapped(event, this)">partner</div>
@@ -124,12 +125,13 @@
 
     <!-- Exercise 2 -->
     <div class="item-container" id="ex2">
-        <div class="section-label">Sentence:</div>
-        <div class="dropzone" onclick="zoneTapped(this)"></div>
-        <div class="section-label">Agreement:</div>
-        <div class="dropzone" onclick="zoneTapped(this)"></div>
+        <div class="section-label">2. Sentence:</div>
+        <div class="dropzone zone-sentence" onclick="zoneClicked(this)"></div>
         
-        <div class="word-bank" onclick="bankTapped(this)">
+        <div class="section-label">Agreement Response:</div>
+        <div class="dropzone zone-agreement" onclick="zoneClicked(this)"></div>
+        
+        <div class="word-bank">
             <div class="word" onclick="wordTapped(event, this)">have</div>
             <div class="word" onclick="wordTapped(event, this)">finished</div>
             <div class="word" onclick="wordTapped(event, this)">So</div>
@@ -147,12 +149,13 @@
 
     <!-- Exercise 3 -->
     <div class="item-container" id="ex3">
-        <div class="section-label">Sentence:</div>
-        <div class="dropzone" onclick="zoneTapped(this)"></div>
-        <div class="section-label">Agreement:</div>
-        <div class="dropzone" onclick="zoneTapped(this)"></div>
+        <div class="section-label">3. Sentence:</div>
+        <div class="dropzone zone-sentence" onclick="zoneClicked(this)"></div>
         
-        <div class="word-bank" onclick="bankTapped(this)">
+        <div class="section-label">Agreement Response:</div>
+        <div class="dropzone zone-agreement" onclick="zoneClicked(this)"></div>
+        
+        <div class="word-bank">
             <div class="word" onclick="wordTapped(event, this)">could</div>
             <div class="word" onclick="wordTapped(event, this)">applicant</div>
             <div class="word" onclick="wordTapped(event, this)">So</div>
@@ -168,28 +171,28 @@
     </div>
 
     <script>
-        // Al tocar una palabra en el banco, se va a la primera zona disponible del ejercicio
         function wordTapped(event, wordEl) {
             event.stopPropagation();
             let container = wordEl.closest('.item-container');
             let bank = container.querySelector('.word-bank');
+            let sentenceZone = container.querySelector('.zone-sentence');
+            let agreementZone = container.querySelector('.zone-agreement');
 
             if (wordEl.parentElement.classList.contains('word-bank')) {
-                let zones = container.querySelectorAll('.dropzone');
-                // Intenta colocarla en la primera zona, si está llena pasa a la segunda
-                if (zones[0].children.length < 10) {
-                    zones[0].appendChild(wordEl);
+                // Lógica de llenado: si la oración tiene menos de 7 palabras, va a la primera zona. Si no, a la segunda.
+                if (sentenceZone.children.length < 7) {
+                    sentenceZone.appendChild(wordEl);
                 } else {
-                    zones[1].appendChild(wordEl);
+                    agreementZone.appendChild(wordEl);
                 }
             } else {
-                // Si ya estaba en una zona, la regresa al banco
+                // Si ya está en una zona, la regresa al banco
                 bank.appendChild(wordEl);
             }
         }
 
-        // Si tocas directamente una zona de entrega vacía o una palabra dentro de ella, la devuelve al banco
-        function zoneTapped(zoneEl) {
+        // Permitir devolver la última palabra colocada al hacer clic directamente en la zona
+        function zoneClicked(zoneEl) {
             if (zoneEl.lastElementChild) {
                 let container = zoneEl.closest('.item-container');
                 let bank = container.querySelector('.word-bank');
@@ -199,9 +202,11 @@
 
         function checkExercise(exNum) {
             let container = document.getElementById("ex" + exNum);
-            let zones = container.querySelectorAll(".dropzone");
-            let wordsBase = Array.from(zones[0].children).map(el => el.innerText);
-            let wordsAgree = Array.from(zones[1].children).map(el => el.innerText);
+            let sentenceZone = container.querySelector(".zone-sentence");
+            let agreementZone = container.querySelector(".zone-agreement");
+            
+            let wordsBase = Array.from(sentenceZone.children).map(el => el.innerText);
+            let wordsAgree = Array.from(agreementZone.children).map(el => el.innerText);
             let feedback = container.querySelector(".feedback");
             
             let correctBase, correctAgree;

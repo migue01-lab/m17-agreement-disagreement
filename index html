@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica Interactiva: Agreements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .instruction {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        .item-container {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sentence {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .dropzone {
+            display: flex;
+            gap: 10px;
+            min-height: 45px;
+            padding: 5px;
+            background: #e9ecef;
+            border: 2px dashed #ced4da;
+            border-radius: 5px;
+            align-items: center;
+        }
+        .word-bank {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .word {
+            background: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: grab;
+            font-weight: bold;
+            user-select: none;
+        }
+        .word:active {
+            cursor: grabbing;
+        }
+        .feedback {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .correct { color: #27ae60; }
+        .incorrect { color: #c0392b; }
+        button {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Práctica Interactiva: Acuerdos Naturales</h2>
+    <p class="instruction">Arrastra las palabras de la parte inferior para formar la respuesta correcta de acuerdo (so + auxiliar + sujeto).</p>
+
+    <!-- Ejercicio 1 -->
+    <div class="item-container" id="ex1">
+        <div class="sentence">1. My brother studies English. (She)</div>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w1">So</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w2">does</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w3">she</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w4">can</div>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <!-- Ejercicio 2 -->
+    <div class="item-container" id="ex2">
+        <div class="sentence">2. Your friends can swim fast. (They)</div>
+        <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
+        <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w5">they</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w6">So</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w7">do</div>
+            <div class="word" draggable="true" ondragstart="drag(event)" id="w8">can</div>
+        </div>
+        <div class="feedback"></div>
+    </div>
+
+    <button onclick="checkAnswers()">Verificar Respuestas</button>
+
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function addHover(ev) {
+            ev.target.style.background = "#d1e7dd";
+        }
+
+        function removeHover(ev) {
+            ev.target.style.background = "#e9ecef";
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData("text");
+            let draggedElement = document.getElementById(data);
+            
+            // Si sueltan en una zona de entrega o banco de palabras válido
+            let target = ev.target;
+            if (target.classList.contains('dropzone') || target.classList.contains('word-bank')) {
+                target.appendChild(draggedElement);
+            } else if (target.classList.contains('word')) {
+                target.parentNode.appendChild(draggedElement);
+            }
+            removeHover({target: ev.currentTarget});
+        }
+
+        function checkAnswers() {
+            // Validación Ejercicio 1
+            let zone1 = document.querySelector("#ex1 .dropzone");
+            let words1 = Array.from(zone1.children).map(el => el.innerText);
+            let feedback1 = document.querySelector("#ex1 .feedback");
+            if (JSON.stringify(words1) === JSON.stringify(["So", "does", "she"])) {
+                feedback1.innerHTML = "¡Correcto! Excelente uso del auxiliar.";
+                feedback1.className = "feedback correct";
+            } else {
+                feedback1.innerHTML = "Inténtalo de nuevo. Recuerda: So + does + she";
+                feedback1.className = "feedback incorrect";
+            }
+
+            // Validación Ejercicio 2
+            let zone2 = document.querySelector("#ex2 .dropzone");
+            let words2 = Array.from(zone2.children).map(el => el.innerText);
+            let feedback2 = document.querySelector("#ex2 .feedback");
+            if (JSON.stringify(words2) === JSON.stringify(["So", "can", "they"])) {
+                feedback2.innerHTML = "¡Correcto! Muy bien aplicado.";
+                feedback2.className = "feedback correct";
+            } else {
+                feedback2.innerHTML = "Inténtalo de nuevo. Recuerda: So + can + they";
+                feedback2.className = "feedback incorrect";
+            }
+        }
+    </script>
+</body>
+</html>

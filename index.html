@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Práctica Interactiva B1: Agreements</title>
+    <title>Interactive Practice B1: Sentences and Agreements</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -68,6 +68,7 @@
         .feedback {
             font-weight: bold;
             margin-top: 10px;
+            font-size: 1.05em;
         }
         .correct { color: #27ae60; }
         .incorrect { color: #c0392b; }
@@ -94,18 +95,18 @@
 </head>
 <body>
 
-    <h2>Práctica Interactiva Nivel B1: Oraciones y Acuerdos</h2>
-    <p class="instruction">Arrastra todas las palabras para ordenar la oración principal (con modales y estructuras B1) y su respectiva respuesta de acuerdo (So + auxiliar + sujeto).</p>
+    <h2>Interactive Practice B1: Sentences and Agreements</h2>
+    <p class="instruction">Drag and drop all words to order the main sentence and its respective agreement response.</p>
 
-    <!-- Ejercicio 1: Modal Should / She -->
+    <!-- Exercise 1 -->
     <div class="item-container" id="ex1">
-        <label>1. Oración Base (Your business partner should invest in marketing):</label>
+        <label>1. Main Sentence (Your business partner should invest in marketing):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Respuesta de Acuerdo (So should she):</label>
+        <label>Agreement Response (So should she):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Banco de Palabras desordenadas:</label>
+        <label>Word Bank:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w1">business</div>
             <div class="word" draggable="true" ondragstart="drag(event)" id="e1_w2">should</div>
@@ -121,15 +122,15 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 2: Verbo Have (Present Perfect) / They -->
+    <!-- Exercise 2 -->
     <div class="item-container" id="ex2">
-        <label>2. Oración Base (My colleagues have already finished the report):</label>
+        <label>2. Main Sentence (My colleagues have already finished the report):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Respuesta de Acuerdo (So have they):</label>
+        <label>Agreement Response (So have they):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Banco de Palabras desordenadas:</label>
+        <label>Word Bank:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w1">have</div>
             <div class="word" draggable="true" ondragstart="drag(event)" id="e2_w2">finished</div>
@@ -145,15 +146,15 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Ejercicio 3: Modal Could / He -->
+    <!-- Exercise 3 -->
     <div class="item-container" id="ex3">
-        <label>3. Oración Base (That applicant could solve the problem):</label>
+        <label>3. Main Sentence (That applicant could solve the problem):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Respuesta de Acuerdo (So could he):</label>
+        <label>Agreement Response (So could he):</label>
         <div class="dropzone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="removeHover(event)" ondragenter="addHover(event)"></div>
         
-        <label>Banco de Palabras desordenadas:</label>
+        <label>Word Bank:</label>
         <div class="word-bank" ondragover="allowDrop(event)" ondrop="drop(event)">
             <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w1">could</div>
             <div class="word" draggable="true" ondragstart="drag(event)" id="e3_w2">applicant</div>
@@ -168,7 +169,7 @@
         <div class="feedback"></div>
     </div>
 
-    <button onclick="checkAnswers()">Verificar Respuestas</button>
+    <button onclick="checkAnswers()">Check Answers</button>
 
     <script>
         function allowDrop(ev) {
@@ -202,7 +203,7 @@
         }
 
         function checkAnswers() {
-            // Validación Ejercicio 1
+            // Exercise 1 Validation
             let zones1 = document.querySelectorAll("#ex1 .dropzone");
             let wordsBase1 = Array.from(zones1[0].children).map(el => el.innerText);
             let wordsAgree1 = Array.from(zones1[1].children).map(el => el.innerText);
@@ -212,14 +213,14 @@
             let correctAgree1 = JSON.stringify(wordsAgree1) === JSON.stringify(["So", "should", "she"]);
 
             if (correctBase1 && correctAgree1) {
-                feedback1.innerHTML = "¡Excelente! Nivel B1 dominado.";
+                feedback1.innerHTML = "Correct! Excellent B1 mastery.";
                 feedback1.className = "feedback correct";
             } else {
-                feedback1.innerHTML = "Revisa bien el orden de los modales y auxiliares.";
+                feedback1.innerHTML = "Incorrect. Check your modals and word order.";
                 feedback1.className = "feedback incorrect";
             }
 
-            // Validación Ejercicio 2
+            // Exercise 2 Validation
             let zones2 = document.querySelectorAll("#ex2 .dropzone");
             let wordsBase2 = Array.from(zones2[0].children).map(el => el.innerText);
             let wordsAgree2 = Array.from(zones2[1].children).map(el => el.innerText);
@@ -229,14 +230,14 @@
             let correctAgree2 = JSON.stringify(wordsAgree2) === JSON.stringify(["So", "have", "they"]);
 
             if (correctBase2 && correctAgree2) {
-                feedback2.innerHTML = "¡Excelente! Excelente uso del 'have'.";
+                feedback2.innerHTML = "Correct! Great use of 'have'.";
                 feedback2.className = "feedback correct";
             } else {
-                feedback2.innerHTML = "Revisa el orden. Cuenta bien los auxiliares.";
+                feedback2.innerHTML = "Incorrect. Review the order and auxiliary verbs.";
                 feedback2.className = "feedback incorrect";
             }
 
-            // Validación Ejercicio 3
+            // Exercise 3 Validation
             let zones3 = document.querySelectorAll("#ex3 .dropzone");
             let wordsBase3 = Array.from(zones3[0].children).map(el => el.innerText);
             let wordsAgree3 = Array.from(zones3[1].children).map(el => el.innerText);
@@ -246,10 +247,10 @@
             let correctAgree3 = JSON.stringify(wordsAgree3) === JSON.stringify(["So", "could", "he"]);
 
             if (correctBase3 && correctAgree3) {
-                feedback3.innerHTML = "¡Perfecto! Estructura impecable.";
+                feedback3.innerHTML = "Correct! Flawless structure.";
                 feedback3.className = "feedback correct";
             } else {
-                feedback3.innerHTML = "Inténtalo de nuevo. Piensa en el modal 'could'.";
+                feedback3.innerHTML = "Incorrect. Think about the modal 'could'.";
                 feedback3.className = "feedback incorrect";
             }
         }

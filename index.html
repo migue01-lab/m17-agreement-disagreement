@@ -301,8 +301,7 @@
     <!-- Input Question 1 -->
     <div class="input-container" id="in1">
         <div class="section-label">1. Sarah can speak three languages fluently. Type the agreement response:</div>
-        <div><em>Example base: Sarah can speak three languages fluently.</em></div>
-        <input type="text" class="input-box" placeholder="e.g. So can she">
+        <input type="text" class="input-box">
         <button onclick="checkInput(1, 'so can she')">Check Answer</button>
         <div class="feedback"></div>
     </div>
@@ -310,7 +309,7 @@
     <!-- Input Question 2 -->
     <div class="input-container" id="in2">
         <div class="section-label">2. Our team achieved all our quarterly goals. Type the agreement response:</div>
-        <input type="text" class="input-box" placeholder="e.g. So did ours">
+        <input type="text" class="input-box">
         <button onclick="checkInput(2, 'so did ours')">Check Answer</button>
         <div class="feedback"></div>
     </div>
@@ -318,7 +317,7 @@
     <!-- Input Question 3 -->
     <div class="input-container" id="in3">
         <div class="section-label">3. David has visited every branch office in Europe. Type the agreement response:</div>
-        <input type="text" class="input-box" placeholder="e.g. So has he">
+        <input type="text" class="input-box">
         <button onclick="checkInput(3, 'so has he')">Check Answer</button>
         <div class="feedback"></div>
     </div>
@@ -326,7 +325,7 @@
     <!-- Input Question 4 -->
     <div class="input-container" id="in4">
         <div class="section-label">4. Your new smartphone takes amazing pictures. Type the agreement response:</div>
-        <input type="text" class="input-box" placeholder="e.g. So does mine">
+        <input type="text" class="input-box">
         <button onclick="checkInput(4, 'so does mine')">Check Answer</button>
         <div class="feedback"></div>
     </div>
@@ -418,7 +417,6 @@
             let inputField = container.querySelector(".input-box");
             let feedback = container.querySelector(".feedback");
             
-            // Limpiamos espacios y convertimos a minúsculas para comparar de forma flexible (ignorando puntuación final si la ponen)
             let userVal = inputField.value.trim().toLowerCase().replace(/[.,]/g, '');
             let expectedVal = correctAnswer.toLowerCase();
 

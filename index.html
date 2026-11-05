@@ -12,7 +12,7 @@
             max-width: 950px;
             margin: auto;
         }
-        h2 {
+        h2, h3 {
             color: #2c3e50;
             text-align: center;
         }
@@ -21,7 +21,7 @@
             margin-bottom: 25px;
             color: #555;
         }
-        .item-container {
+        .item-container, .mc-container {
             background: #fff;
             padding: 20px;
             margin-bottom: 25px;
@@ -71,6 +71,21 @@
         .word:hover {
             background: #1f618d;
         }
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        .options-list li {
+            margin-bottom: 8px;
+        }
+        .options-list label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05em;
+        }
         .feedback {
             font-weight: bold;
             margin-top: 15px;
@@ -97,16 +112,16 @@
 <body>
 
     <h2>Interactive Practice B1: Sentences and Agreements</h2>
-    <p class="instruction">Tap words from the bank to build the sentence and agreement. Tap any placed word to send it back.</p>
+    <p class="instruction">Part 1: Tap words to build sentences and agreement responses. Part 2: Choose the correct tricky agreement.</p>
 
-    <!-- Exercise 1 -->
+    <!-- PART 1: Word Order Exercises -->
+    <h3>Part 1: Order the Sentences</h3>
+
     <div class="item-container" id="ex1" data-sentence-count="7">
         <div class="section-label">1. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
-        
         <div class="section-label">Agreement Response:</div>
         <div class="dropzone zone-agreement"></div>
-        
         <div class="word-bank">
             <div class="word" onclick="wordTapped(this)">business</div>
             <div class="word" onclick="wordTapped(this)">should</div>
@@ -123,14 +138,11 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Exercise 2 -->
     <div class="item-container" id="ex2" data-sentence-count="7">
         <div class="section-label">2. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
-        
         <div class="section-label">Agreement Response:</div>
         <div class="dropzone zone-agreement"></div>
-        
         <div class="word-bank">
             <div class="word" onclick="wordTapped(this)">have</div>
             <div class="word" onclick="wordTapped(this)">finished</div>
@@ -147,14 +159,11 @@
         <div class="feedback"></div>
     </div>
 
-    <!-- Exercise 3 -->
     <div class="item-container" id="ex3" data-sentence-count="6">
         <div class="section-label">3. Sentence:</div>
         <div class="dropzone zone-sentence"></div>
-        
         <div class="section-label">Agreement Response:</div>
         <div class="dropzone zone-agreement"></div>
-        
         <div class="word-bank">
             <div class="word" onclick="wordTapped(this)">could</div>
             <div class="word" onclick="wordTapped(this)">applicant</div>
@@ -170,7 +179,37 @@
         <div class="feedback"></div>
     </div>
 
+
+    <!-- PART 2: Tricky Multiple Choice Exercises -->
+    <h3>Part 2: Tricky Agreements Challenge</h3>
+
+    <!-- MC Question 1 -->
+    <div class="mc-container" id="mc1">
+        <div class="section-label">1. Mark must submit the report by Friday, and...</div>
+        <ul class="options-list">
+            <li><label><input type="radio" name="q1" value="a"> So must he.</label></li>
+            <li><label><input type="radio" name="q1" value="b"> So he must.</label></li>
+            <li><label><input type="radio" name="q1" value="c"> So must submit he.</label></li>
+        </ul>
+        <button onclick="checkMC(1, 'a')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+    <!-- MC Question 2 -->
+    <div class="mc-container" id="mc2">
+        <div class="section-label">2. The directors have approved the new budget, and...</div>
+        <ul class="options-list">
+            <li><label><input type="radio" name="q2" value="a"> So have they.</label></li>
+            <li><label><input type="radio" name="q2" value="b"> So they have.</label></li>
+            <li><label><input type="radio" name="q2" value="c"> So has the directors.</label></li>
+        </ul>
+        <button onclick="checkMC(2, 'a')">Check Answer</button>
+        <div class="feedback"></div>
+    </div>
+
+
     <script>
+        // Lógica de Part 1 (Toques)
         function wordTapped(wordEl) {
             let container = wordEl.closest('.item-container');
             let bank = container.querySelector('.word-bank');
@@ -179,17 +218,14 @@
             let maxSentenceWords = parseInt(container.getAttribute('data-sentence-count'));
 
             if (wordEl.parentElement.classList.contains('word-bank')) {
-                // Si está en el banco: llena la oración hasta su límite exacto, el resto va al acuerdo
                 if (sentenceZone.children.length < maxSentenceWords) {
                     sentenceZone.appendChild(wordEl);
                 } else {
                     agreementZone.appendChild(wordEl);
                 }
             } else if (wordEl.parentElement.classList.contains('zone-sentence')) {
-                // Si está en la oración, la pasamos al acuerdo directamente
                 agreementZone.appendChild(wordEl);
             } else {
-                // Si está en el acuerdo, regresa al banco
                 bank.appendChild(wordEl);
             }
         }
@@ -221,6 +257,27 @@
                 feedback.className = "feedback correct";
             } else {
                 feedback.innerHTML = "Incorrect. Check your modals and word order.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        // Lógica de Part 2 (Selección Múltiple)
+        function checkMC(qNum, correctOption) {
+            let container = document.getElementById("mc" + qNum);
+            let selected = container.querySelector('input[name="q' + qNum + '"]:checked');
+            let feedback = container.querySelector(".feedback");
+
+            if (!selected) {
+                feedback.innerHTML = "Please select an option first.";
+                feedback.className = "feedback incorrect";
+                return;
+            }
+
+            if (selected.value === correctOption) {
+                feedback.innerHTML = "Correct! Well spotted.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "Incorrect. Watch out for subject-auxiliary inversion rules!";
                 feedback.className = "feedback incorrect";
             }
         }
